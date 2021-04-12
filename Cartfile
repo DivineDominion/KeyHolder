@@ -1,1 +1,2 @@
-github "Clipy/Magnet"
+# github "Clipy/Magnet"
+git "file:///Users/ctm/Coding/_vendor/Magnet" "hotfix2021"
