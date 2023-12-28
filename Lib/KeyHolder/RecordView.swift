@@ -136,12 +136,12 @@ open class RecordView: NSView {
     override open func draw(_ dirtyRect: NSRect) {
         layer?.backgroundColor = backgroundColor.cgColor
         layer?.borderColor = borderColor.cgColor
-        drawModifiers(dirtyRect)
-        drawKeyCode(dirtyRect)
-        drawClearButton(dirtyRect)
+        drawModifiers()
+        drawKeyCode()
+        drawClearButton()
     }
 
-    private func drawModifiers(_ dirtyRect: NSRect) {
+    private func drawModifiers() {
         let fontSize = self.fontSize
         let modifiers = keyCombo.map { NSEvent.ModifierFlags(carbonModifiers: $0.modifiers) }
             ?? inputModifiers
@@ -151,7 +151,7 @@ open class RecordView: NSView {
         }
     }
 
-    private func drawKeyCode(_ dirtyRext: NSRect) {
+    private func drawKeyCode() {
         guard let keyCombo = self.keyCombo else { return }
         let fontSize = self.fontSize
         let minX = (fontSize * 4) + (marginX * 2)
@@ -161,7 +161,7 @@ open class RecordView: NSView {
         text.draw(in: NSRect(x: minX, y: marginY, width: width, height: bounds.height), withAttributes: keyCodeTextAttributes())
     }
 
-    private func drawClearButton(_ dirtyRext: NSRect) {
+    private func drawClearButton() {
         let clearSize = self.clearSize
         let x = bounds.width - clearSize - marginX
         let y = (bounds.height - clearSize) / 2
