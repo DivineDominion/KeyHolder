@@ -143,8 +143,7 @@ open class RecordView: NSView {
 
     private func drawModifiers() {
         let fontSize = self.fontSize
-        let modifiers = keyCombo.map { NSEvent.ModifierFlags(carbonModifiers: $0.modifiers) }
-            ?? inputModifiers
+        let modifiers = keyCombo.map { NSEvent.ModifierFlags(carbonModifiers: $0.modifiers) } ?? inputModifiers
         for (i, text) in validModifiersText.enumerated() {
             let rect = NSRect(x: marginX + (fontSize * CGFloat(i)), y: marginY, width: fontSize, height: bounds.height)
             text.draw(in: rect, withAttributes: modifierTextAttributes(modifiers, checkModifier: validModifiers[i]))
